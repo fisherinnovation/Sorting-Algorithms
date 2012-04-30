@@ -42,10 +42,12 @@ def adaptive_merge_sort(list2):
 # Bubble Sort
 @print_timing
 def bubble_sort(list2):
-    for i in range(0, len(list2) - 1):
+    l = len(list2)
+    
+    for i in range(0, l - 1):
         swap_test = False
         
-        for j in range(0, len(list2) - i - 1):
+        for j in range(0, l - i - 1):
             if list2[j] > list2[j + 1]:
                 list2[j], list2[j + 1] = list2[j + 1], list2[j]
             swap_test = True
@@ -57,9 +59,11 @@ def bubble_sort(list2):
 # Selection Sort
 @print_timing
 def selection_sort(list2):
-    for i in range(0, len (list2)):
+    l = len(list2)
+    
+    for i in range(0, l):
         min = i
-        for j in range(i + 1, len(list2)):
+        for j in range(i + 1, l):
             if list2[j] < list2[min]:
                 min = j
         list2[i], list2[min] = list2[min], list2[i]  
@@ -80,13 +84,16 @@ def insertion_sort(list2):
 # Quick Sort
 @print_timing
 def quick_sort(list2):
+    #print 'Start Quicksort...'
     quick_sort_r(list2, 0, len(list2) - 1)
     
     
 # Quick_sort_r, Recursive (used by quick_sort)
-def quick_sort_r(list2 , first, last):
+def quick_sort_r(list2, first, last):
     if last > first:
         pivot = partition(list2, first, last)
+        #print 'Current Pivot: ' + str(pivot)
+        
         quick_sort_r(list2, first, pivot - 1)
         quick_sort_r(list2, pivot + 1, last)
         
@@ -124,9 +131,10 @@ def heap_sort(list2):
     first = 0
     last = len(list2) - 1
     create_heap(list2, first, last)
+    
     for i in range(last, first, -1):
         list2[i], list2[first] = list2[first], list2[i]
-        establish_heap_property (list2, first, i - 1)
+        establish_heap_property(list2, first, i - 1)
         
         
 # Create Heap (Used by heap_sort)
