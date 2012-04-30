@@ -11,7 +11,7 @@ import random   # For generating random numbers
 import time     # For timing each sort function with time.clock()
 DEBUG = False   # Set True to check results of each sort
 N = 1000        # Number of elements in list
-sortlist = []      # List of integer elements
+sortlist = []   # List of integer elements
 
 
 # Setup basic randomized list.
@@ -42,9 +42,7 @@ def adaptive_merge_sort(list2):
 # Bubble Sort
 @print_timing
 def bubble_sort(list2):
-    # Swap_test = False
     for i in range(0, len(list2) - 1):
-        # As suggested by kubrick, makes sense
         swap_test = False
         
         for j in range(0, len(list2) - i - 1):
@@ -56,7 +54,7 @@ def bubble_sort(list2):
             break
         
         
-# Selection sort
+# Selection Sort
 @print_timing
 def selection_sort(list2):
     for i in range(0, len (list2)):
@@ -67,7 +65,7 @@ def selection_sort(list2):
         list2[i], list2[min] = list2[min], list2[i]  
       
       
-# Insertion sort
+# Insertion Sort
 @print_timing
 def insertion_sort(list2):
     for i in range(1, len(list2)):
@@ -79,13 +77,13 @@ def insertion_sort(list2):
         list2[j] = save
   
   
-# Quick sort
+# Quick Sort
 @print_timing
 def quick_sort(list2):
     quick_sort_r(list2, 0, len(list2) - 1)
     
     
-# Quick_sort_r, recursive (used by quick_sort)
+# Quick_sort_r, Recursive (used by quick_sort)
 def quick_sort_r(list2 , first, last):
     if last > first:
         pivot = partition(list2, first, last)
@@ -93,7 +91,7 @@ def quick_sort_r(list2 , first, last):
         quick_sort_r(list2, pivot + 1, last)
         
         
-# Partition (used by quick_sort_r)
+# Partition (Used by quick_sort_r)
 def partition(list2, first, last):
     sred = (first + last)/2
     if list2[first] > list2 [sred]:
@@ -120,7 +118,7 @@ def partition(list2, first, last):
     return j
 
 
-# Heap sort
+# Heap Sort
 @print_timing
 def heap_sort(list2):
     first = 0
@@ -131,7 +129,7 @@ def heap_sort(list2):
         establish_heap_property (list2, first, i - 1)
         
         
-# Create heap (used by heap_sort)
+# Create Heap (Used by heap_sort)
 def create_heap(list2, first, last):
     i = last/2
     while i >= first:
@@ -139,7 +137,7 @@ def create_heap(list2, first, last):
         i -= 1
         
         
-# Establish heap property (used by create_heap)
+# Establish Heap Property (Used by create_heap)
 def establish_heap_property(list2, first, last):
     while 2 * first + 1 <= last:
         k = 2 * first + 1
@@ -151,13 +149,13 @@ def establish_heap_property(list2, first, last):
         first = k
         
         
-# Merge sort
+# Merge Sort
 @print_timing
 def merge_sort(list2):
     merge_sort_r(list2, 0, len(list2) -1)
     
     
-# Merge sort recursive (used by merge_sort)
+# Merge Sort Recursive (used by merge_sort)
 def merge_sort_r(list2, first, last):
     if first < last:
         sred = (first + last)/2
@@ -192,14 +190,14 @@ def merge(list2, first, last, sred):
         list2[first + k] = helper_list [k]
         
         
-# Test sorted list by printing the first 10 elements
+# Test Sorted List by Printing the First 10 Elements
 def printDebug(list2):
     for k in range(10):
         print list2[k],
     print
     
     
-# Run test if script is executed
+# Run Test if Script is Executed
 if __name__ == "__main__" :
     print "Benchmarking 7 sorting algorithms \n" + str(N) + " randomized integers\nDebug Mode: " + str(DEBUG)
     print "----------------------------------------------------------------------------"
