@@ -72,7 +72,8 @@ def selection_sort(list2):
 # Insertion Sort
 @print_timing
 def insertion_sort(list2):
-    for i in range(1, len(list2)):
+    l = len(list2)
+    for i in range(1, l):
         save = list2[i]
         j = i
         while j > 0 and list2[j - 1] > save:
@@ -84,8 +85,8 @@ def insertion_sort(list2):
 # Quick Sort
 @print_timing
 def quick_sort(list2):
-    #print 'Start Quicksort...'
-    quick_sort_r(list2, 0, len(list2) - 1)
+    l = len(list2)
+    quick_sort_r(list2, 0, l - 1)
     
     
 # Quick_sort_r, Recursive (used by quick_sort)
