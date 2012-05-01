@@ -7,9 +7,9 @@ package
 	[SWF(frameRate="60", backgroundColor="0xFFFFFF", width="600", height="600")]
 	public class Main extends Sprite {
 		
-		private var _list:Array;
-		private var _amount:int = 600;
-		
+		private var _list:		Array;
+		private var _amount:	int = 600;
+		private var _line:LineHiLighter;
 		
 		/**
 		 * 
@@ -25,6 +25,10 @@ package
 		 */
 		private function init():void {
 			_list = new Array();
+			
+			// Background line.
+			_line = new LineHiLighter();
+			addChild(_line);
 			
 			for(var i:int = 0; i < _amount; i++) {
 				var dot:Dot = new Dot();
@@ -60,6 +64,8 @@ package
 		
 		/**
 		 * Insertion Sort.
+		 * 
+		 * @param	$list	The array to sort.
 		 */
 		private function insertionSort($list:Array):void {
 			var l:int = $list.length;
@@ -76,8 +82,19 @@ package
 				$list[j] = save;
 				_list = $list;
 				
-				TweenLite.to($list[j], 0.25, { x:$list[j].getValue(), delay:i * 0.01 });
+				// Animate the item into proper position.
+				TweenLite.to($list[j], 0.25, { onStart:moveLine, onStartParams:[$list[j].getValue()], x:$list[j].getValue(), delay:i * 0.01 });
 			}
+		}
+		
+		
+		/**
+		 * Move the line to the active sort.
+		 * 
+		 * @param	$y	Where to move the line to.
+		 */ 
+		private function moveLine($y:int):void {
+			_line.y = $y;
 		}
 		
 	}
