@@ -5,10 +5,18 @@ package {
 		
 		private var _line:Sprite;
 		
+		
+		/**
+		 * 
+		 */
 		public function LineHiLighter() {
 			init();
 		}
 		
+		
+		/**
+		 * 
+		 */
 		private function init():void {
 			_line = new Sprite();
 			_line.graphics.beginFill(0xFF0000);
